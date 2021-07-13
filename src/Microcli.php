@@ -51,12 +51,18 @@ class Microcli{
 	* @param array $argv
 	*/
 	public function run($argv){
-		$command_name = 'help';
+		$command_name = null;
 
 		if(isset($argv[1])){
 			$command_name = $argv[1];
 		}
-
+		
+		if($command_name == null){
+			$this->color('info')->line();
+			$this->color('info')->write('You must send a command!');
+			$this->color('info')->line();
+			$this->exit();
+		}
 
 		if($this->command->exist($command_name)){
 			return $this->command->run($command_name, $argv);
