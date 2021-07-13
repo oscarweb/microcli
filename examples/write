@@ -1,0 +1,35 @@
+#!/usr/bin/php;
+<?php
+if(php_sapi_name() !== 'cli'){
+	exit();
+}
+//- enter correct path
+require __DIR__.'/../vendor/autoload.php';
+
+use Microcli\Microcli;
+
+$app = new Microcli();
+
+$app->prefix('>');
+
+$app->line()->write('Hello World!');
+
+$app->color('info')->write('Praesent vulputate lacinia metus in finibus. Praesent eu tristique libero. Vivamus ac magna maximus, euismod sem ac, scelerisque urna. Quisque aliquam tristique lectus. Cras sit amet pulvinar purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras placerat tincidunt iaculis. Suspendisse potenti. Sed tristique pharetra aliquet. Phasellus rhoncus orci vel lacus imperdiet elementum.');
+$app->line();
+
+$text_group = [
+	'Aliquam nisl magna',
+	'Morbi elit neque, lacinia eu semper sit amet, luctus vel nisi',
+	'Class aptent taciti sociosqu ad litora torquent',
+	'Sed nisl ante, ultrices vitae odio in',
+	'Cras sit amet pulvinar purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras placerat tincidunt iaculis. Suspendisse potenti.'
+];
+
+
+foreach($text_group as $text){
+	$app->color('success')->replace($text);
+	sleep(1);
+}
+
+$app->write('Lorem Ipsum...');
+

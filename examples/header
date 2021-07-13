@@ -1,0 +1,26 @@
+#!/usr/bin/php;
+<?php
+if(php_sapi_name() !== 'cli'){
+	exit();
+}
+//- enter correct path
+require __DIR__.'/../vendor/autoload.php';
+
+use Microcli\Microcli;
+
+$app = new Microcli();
+
+$header = <<< EOT
+        _                _ _ 
+  _ __ (_)__ _ _ ___  __| (_)
+ | '  \| / _| '_/ _ \/ _| | |
+ |_|_|_|_\__|_| \___/\__|_|_|
+                             
+ v0.1.0
+                             
+EOT;
+
+//- write header
+$app->color('info')->header($header);
+
+$app->write('Hello World');

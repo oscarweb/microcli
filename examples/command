@@ -1,0 +1,52 @@
+#!/usr/bin/php;
+<?php
+if(php_sapi_name() !== 'cli'){
+	exit();
+}
+//- enter correct path
+require __DIR__.'/../vendor/autoload.php';
+
+use Microcli\Microcli;
+
+$app = new Microcli();
+
+$app->addCommand('getinfo', function() use ($app){
+
+	$app->replace('Waiting...');
+
+	$url = 'http://httpbin.org/json';
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_VERBOSE, 0);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+	$data = curl_exec($ch);
+
+	if(curl_errno($ch)){
+		$app->color('danger')->write('Request failed!')->exit();
+	}
+	
+	$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+	if($http_code == 200 || $http_code == 201){
+		$data = json_decode($data);
+
+		$app->color('success')->line()->write('Slideshows - '.$url);
+		$app->color('success')->line()->write('Author: '.$data->slideshow->author);
+		$app->color('success')->line()->write('Date: '.$data->slideshow->date);
+
+		foreach($data->slideshow->slides as $slide){
+			$app->color('success')->line()->write('Title: '.$slide->title);
+		}
+
+	}
+	else{
+		$app->color('danger')->write('Code error: '.$http_code);	
+	}
+
+	curl_close($ch);
+
+	$app->exit();
+});
+
+$app->run($argv);

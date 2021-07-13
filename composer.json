@@ -1,0 +1,22 @@
+{
+    "name": "oscarweb/microcli",
+    "type": "library",
+    "description": "Simple extension for text output for php on command line.",
+    "keywords": ["cli","command-line", "php"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oscar S.C.",
+            "email": "php@oscarweb.com.ar"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2"
+    },
+    "autoload" : {
+        "psr-4" : {
+            "Microcli\\" : "src/"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+#!/usr/bin/php;
+<?php
+if(php_sapi_name() !== 'cli'){
+	exit();
+}
+//- enter correct path
+require __DIR__.'/../vendor/autoload.php';
+
+use Microcli\Microcli;
+
+$app = new Microcli();
+
+$app->line()->write('Countdown')->line();
+$app->timer(5)->write('The counter ends in <s> seconds');
+$app->write('Execute script...');
