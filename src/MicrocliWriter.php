@@ -113,7 +113,10 @@ class MicrocliWriter{
 	* @param int $length
 	*/
 	public function line($character = '-', $length = 40){
-		return $this->out(str_pad($character, ($length - strlen($character)), $character));
+		$buffer_prefix = $this->prefix;
+		$this->prefix = '';
+		$this->out(str_pad($character, ($length - strlen($character)), $character));
+		$this->prefix = $buffer_prefix;
 	}
 
 	/**
