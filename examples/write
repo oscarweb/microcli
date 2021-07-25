@@ -22,7 +22,7 @@ $text_group = [
 	'Morbi elit neque, lacinia eu semper sit amet, luctus vel nisi',
 	'Class aptent taciti sociosqu ad litora torquent',
 	'Sed nisl ante, ultrices vitae odio in',
-	'Cras sit amet pulvinar purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras placerat tincidunt iaculis. Suspendisse potenti.'
+	'Interdum et malesuada fames ac ante ipsum primis in faucibus.'
 ];
 
 
