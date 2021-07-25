@@ -5,7 +5,7 @@ Simple extension for text output for php on command line.
 #### Install vía [Composer](https://packagist.org/packages/oscarweb/microcli "Composer")
 Just add this line to your `composer.json` file:
 ```json
-"oscarweb/microcli": "0.1.0"
+"oscarweb/microcli": "0.1.1"
 ```
 or run
 
