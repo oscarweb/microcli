@@ -50,7 +50,7 @@ $app = new Microcli();
 
 $app->addCommand('hello', function($argv) use ($app){
 	$app->line();
-	$app->color('danger')->write('Hello World');
+	$app->color('success')->write('Hello World');
 	$app->line();
 	$app->exit();
 });
